@@ -104,6 +104,9 @@ git push origin main
 ![Singup](https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/7420f9ae0d9dff481a2efd82363b814f8c693f1f/screenshots/Singup.png)
 
 ![Laptopregistration](https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/1b3ac7865c03fb517212cab7e4e590c247a5335d/screenshots/laptopregistration.png)
+![Dashboard](https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/blob/0950a662782c22e6ed6afd2e476e91296e270477/screenshots/Dashboard.png)
+![Report](https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/blob/0950a662782c22e6ed6afd2e476e91296e270477/screenshots/Report.png)
+
 
 
 ### 🔹 *QR Code Verification*
