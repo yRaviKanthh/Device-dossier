@@ -101,8 +101,7 @@ git push origin main
 ## 📸 Screenshots
 
 ### 🔹 *Web Interface*
-![Web App Screenshot][[(https://your-screenshot-link.com/web-interface.png)](https://github.com/yRaviKanthh/Device-dossier/blob/512ea87aeec2209e5291f4a78d7ca98ee363be71/Screenshot%20(33).png)](https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/main/Screenshot%20(33).png
-)
+![Web App Screenshot](https://github.com/yRaviKanthh/Device-dossier/blob/512ea87aeec2209e5291f4a78d7ca98ee363be71/Screenshot%20(33).png)
 
 ### 🔹 *QR Code Verification*
 ![QR Code Verification](https://your-screenshot-link.com/qr-code-verification.png)
