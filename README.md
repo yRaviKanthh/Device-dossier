@@ -27,7 +27,8 @@ project/
 │   │   └── index.html          # Frontend page for laptop store map
 │   ├── register-laptop.html    # Registration form for laptops
 │   ├── view-laptop.html        # View details of registered laptops
-│   ├── style.css               # Stylesheet for the application
+│   ├── style.css
+├── screenshort/               #for github Stylesheet for the application
 ├── views/
 │   ├── dashboard.ejs           # Dashboard view for the application
 │   ├── index.ejs               # Homepage view
@@ -62,7 +63,7 @@ project/
 
 ### 🔹 Clone the Repository
 ```bash
-git clone https://github.com/your-username/device-dossier.git
+git clone https://github.com/yRaviKanthh/Device-dossier.git
 cd device-dossier
 ```
 
@@ -77,24 +78,6 @@ node app.js
 ```
 
 🔗 Open in your browser: *http://127.0.0.1:3000/*
-
----
-
-## 🚀 Deploying on Render
-
-### 1️⃣ *Push Code to GitHub*
-```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
-
-### 2️⃣ *Deploy on Render:*
-- Go to [Render](https://render.com/)  
-- Click *New Web Service*  
-- Connect to your GitHub repository  
-- Set *Start Command:* `node app.js`  
-- Click *Deploy* 🎉  
 
 ---
 
