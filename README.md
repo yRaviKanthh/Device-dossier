@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 # Device-dossier
-Device Dossier is a smart solution for device security, authenticity verification, and service accessibility. It enables users to verify authenticity, check warranty, track lost/stolen devices, and find service centers using anti-tamper QR codes and geolocation. 🚀🔐
+🚀 Device Dossier – A scalable solution for device security! Verify authenticity, check warranties, track lost/stolen devices, and locate service centers using QR codes. Built with Node.js, MongoDB & Leaflet.js, integrating IoT & AI for protection. 🔐📍
 =======
 # 🚀 Device Dossier: Authenticity, Protection & Store Locator
 
