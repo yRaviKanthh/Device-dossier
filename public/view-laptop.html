@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Laptop</title>
+</head>
+<body>
+  <h1>Search Laptop Details</h1>
+  <form id="searchForm">
+    <label for="serialNumber">Enter Serial Number:</label>
+    <input type="text" id="serialNumber" name="serialNumber" required>
+    <button type="button" onclick="fetchLaptopDetails()">Search</button>
+  </form>
+  <div id="laptopDetails"></div>
+
+  <script>
+    async function fetchLaptopDetails() {
+      const serialNumber = document.getElementById("serialNumber").value;
+      const response = await fetch(`/view-laptop/${serialNumber}`);
+      const data = await response.json();
+
+      if (response.ok) {
+        document.getElementById("laptopDetails").innerHTML = `
+          <h2>Laptop Details</h2>
+          <p><strong>Brand:</strong> ${data.brand}</p>
+          <p><strong>Model:</strong> ${data.model}</p>
+          <p><strong>Serial Number:</strong> ${data.serialNumber}</p>
+          <p><strong>OS:</strong> ${data.os}</p>
+          <p><strong>Memory:</strong> ${data.memory} GB</p>
+          <p><strong>Storage:</strong> ${data.storage} GB</p>
+          <p><strong>Additional Details:</strong> ${data.comments}</p>
+        `;
+      } else {
+        document.getElementById("laptopDetails").innerText = data || "Laptop not found.";
+      }
+    }
+  </script>
+</body>
+</html>

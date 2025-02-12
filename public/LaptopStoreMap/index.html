@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Store Locator</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* Control buttons style */
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            margin: 10px 0;
+            padding: 12px 25px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 200px;
+            display: block;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Popup style for route and store details */
+        .leaflet-popup-content {
+            background-color: white;
+            color: black;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Customize route control popups */
+        .leaflet-routing-container {
+            background-color: white !important;
+            color: black !important;
+            border-radius: 5px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Control Buttons -->
+    <div id="controls">
+        <button id="locate-me">Locate Me</button>
+        <button id="all-stores">All Stores Near Me</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([20.5937, 78.9629], 5); // Default view (India)
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Marker cluster group
+        const markers = L.markerClusterGroup();
+        let currentRoute = null; // Keep track of the current route
+
+        // Function to fetch and display stores
+        function fetchStores() {
+            const bounds = map.getBounds();
+            const query = `
+                [out:json];
+                (
+                    node["shop"="electronics"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+                    node["repair"="laptop"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+                    node["service"="laptop"](${bounds.getSouth()},${bounds.getWest()},${bounds.getNorth()},${bounds.getEast()});
+                );
+                out;
+            `;
+
+            // Show loading spinner
+            showLoading();
+
+            fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Clear existing markers
+                    markers.clearLayers();
+
+                    // Add new markers
+                    data.elements.forEach(element => {
+                        if (element.lat && element.lon) {
+                            const name = element.tags.name || "Store";
+                            const brand = element.tags.brand || "Unknown Brand";
+                            const marker = L.marker([element.lat, element.lon]).bindPopup(`
+                                <b>${name}</b><br>
+                                Brand: ${brand}
+                            `);
+
+                            // Add routing on marker click
+                            marker.on('click', () => {
+                                // Clear any previous route
+                                if (currentRoute) {
+                                    map.removeControl(currentRoute);
+                                }
+
+                                // Add new route from user location to clicked store
+                                currentRoute = L.Routing.control({
+                                    waypoints: [
+                                        L.latLng(userLocation.lat, userLocation.lon),
+                                        L.latLng(element.lat, element.lon)
+                                    ],
+                                    routeWhileDragging: true
+                                }).addTo(map);
+
+                                // Adjust map view to include both the user's location and the store
+                                map.fitBounds([L.latLng(userLocation.lat, userLocation.lon), L.latLng(element.lat, element.lon)]);
+                            });
+
+                            markers.addLayer(marker);
+                        }
+                    });
+
+                    map.addLayer(markers);
+                })
+                .catch(error => console.error("Error fetching Overpass data:", error))
+                .finally(() => hideLoading()); // Hide loading spinner
+        }
+
+        // Show all stores near user when "All Stores Near Me" is clicked
+        document.getElementById('all-stores').addEventListener('click', () => {
+            fetchStores();
+        });
+
+        // Show loading spinner
+        function showLoading() {
+            if (!document.getElementById('loading')) {
+                const loading = document.createElement('div');
+                loading.id = 'loading';
+                loading.style.position = 'absolute';
+                loading.style.top = '50%';
+                loading.style.left = '50%';
+                loading.style.transform = 'translate(-50%, -50%)';
+                loading.style.padding = '20px';
+                loading.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                loading.style.color = 'white';
+                loading.style.fontSize = '16px';
+                loading.style.borderRadius = '5px';
+                loading.innerHTML = 'Loading...';
+                document.body.appendChild(loading);
+            }
+        }
+
+        // Hide loading spinner
+        function hideLoading() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                document.body.removeChild(loading);
+            }
+        }
+
+        // Get user's current location
+        let userLocation = { lat: 20.5937, lon: 78.9629 }; // Default location (India)
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    userLocation = {
+                        lat: position.coords.latitude,
+                        lon: position.coords.longitude
+                    };
+                    L.marker([userLocation.lat, userLocation.lon], { title: "You are here" })
+                        .addTo(map)
+                        .bindPopup("Your Location")
+                        .openPopup();
+
+                    map.setView([userLocation.lat, userLocation.lon], 13); // Zoom to user location
+                },
+                error => console.error("Geolocation error:", error)
+            );
+        } else {
+            alert("Geolocation is not supported by your browser.");
+        }
+
+        // Add a scale bar
+        L.control.scale().addTo(map);
+
+        // "Locate Me" button event
+        document.getElementById('locate-me').addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        userLocation = {
+                            lat: position.coords.latitude,
+                            lon: position.coords.longitude
+                        };
+                        map.setView([userLocation.lat, userLocation.lon], 13); // Zoom to user location
+                    },
+                    error => console.error("Geolocation error:", error)
+                );
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

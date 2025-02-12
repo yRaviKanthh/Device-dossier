@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second-Hand Laptop</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffdb4d;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        p, li {
+            font-size: 18px;
+            color: #dcdcdc;
+            line-height: 1.8;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .qr-code img {
+            width: 200px;
+            height: 200px;
+            border: 3px solid #fff;
+            border-radius: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li strong {
+            color: #00ffcc;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            background-color: #00bfff;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0088cc;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Second-Hand Laptop</h1>
+        <p>
+            This laptop has already been registered by another user. It is now classified as a second-hand laptop.
+            Below are the details of the original owner. Use the QR code to access their contact information.
+        </p>
+
+        <!-- Display QR Code -->
+        <div class="qr-code">
+            <img src="<%= qrCode %>" alt="QR Code" />
+        </div>
+
+        <!-- Original User Details -->
+        <p><strong>Original User Details:</strong></p>
+        <ul>
+            <li><strong>Name:</strong> <%= userDetails.name %></li>
+            <li><strong>Email:</strong> <%= userDetails.email %></li>
+            <li><strong>Phone:</strong> <%= userDetails.phone %></li>
+        </ul>
+
+        <!-- Laptop Details -->
+        <p><strong>Laptop Details:</strong></p>
+        <ul>
+            <li><strong>Serial Number:</strong> <%= laptopDetails.serialNumber %></li>
+            <li><strong>Model:</strong> <%= laptopDetails.model %></li>
+            <li><strong>Brand:</strong> <%= laptopDetails.brand %></li>
+            <li><strong>Warranty:</strong> <%= laptopDetails.warranty %> years</li>
+            <li><strong>Operating System:</strong> <%= laptopDetails.os %></li>
+            <li><strong>Memory:</strong> <%= laptopDetails.memory %> GB</li>
+            <li><strong>Storage:</strong> <%= laptopDetails.storage %> GB</li>
+        </ul>
+
+        <!-- Navigation Button -->
+        <a href="/dashboard" class="btn">Go to Dashboard</a>
+    </div>
+</body>
+</html>

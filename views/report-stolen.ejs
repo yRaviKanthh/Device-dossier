@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Stolen Laptop</title>
+    <style>
+        /* General page styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20201026/pngtree-futuristic-shape-abstract-background-chemistry-technology-concept-for-website-image_438818.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(76, 175, 80, 0.8);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.8em;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main container styling */
+        .container {
+            width: 50%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            color: #f9f9f9;
+            margin-bottom: 20px;
+        }
+
+        /* Form styling */
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: block;
+            color: #f9f9f9;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Message styling */
+        .message {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            color: #333;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        /* Link styling */
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 1em;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                width: 80%;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Report Stolen Laptop</h1>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>Report your stolen laptop by entering its serial number and a message below:</h2>
+
+        <!-- Report Stolen Form -->
+        <form action="/report-stolen" method="POST">
+            <label for="serialNumber">Laptop Serial Number:</label>
+            <input type="text" id="serialNumber" name="serialNumber" required placeholder="Enter serial number">
+
+            <label for="stolenMessage">Stolen Message:</label>
+            <textarea id="stolenMessage" name="stolenMessage" rows="4" required placeholder="Describe the stolen laptop and any additional details"></textarea>
+
+            <button type="submit">Report as Stolen</button>
+        </form>
+
+        <!-- Displaying Message -->
+        <% if (message) { %>
+            <div class="message <%= message.type %>">
+                <%= message.text %>
+            </div>
+        <% } %>
+
+        <!-- Back Link -->
+        <a class="back-link" href="/dashboard">Back to Dashboard</a>
+    </div>
+
+</body>
+</html>

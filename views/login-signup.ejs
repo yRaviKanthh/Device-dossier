@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://t3.ftcdn.net/jpg/02/92/90/56/360_F_292905667_yFUJNJPngYeRNlrRL4hApHWxuYyRY4kN.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="heading">Welcome to IDevice </h1>
+        <h3 class="title">Signup if you don't have account</h3>
+    </header>
+
+    <div class="container">
+        <div class="slider"></div>
+        <div class="btn">
+            <button class="login">Login</button>
+            <button class="signup">Signup</button>
+        </div>
+
+        <div class="form-section">
+            <!-- Login Form -->
+            <form action="/login" method="POST" class="login-box">
+                <input type="email" name="email" class="email ele" placeholder="youremail@email.com" required>
+                <input type="password" name="password" class="password ele" placeholder="password" required>
+                <button type="submit" class="clkbtn">Login</button>
+            </form>
+
+            <!-- Signup Form -->
+            <form action="/signup" method="POST" class="signup-box">
+                <input type="text" name="name" class="name ele" placeholder="Enter your name" required>
+                <input type="email" name="email" class="email ele" placeholder="youremail@email.com" required>
+                <input type="password" name="password" class="password ele" placeholder="password" required>
+                <input type="password" name="confirmPassword" class="password ele" placeholder="Confirm password" required>
+                <button type="submit" class="clkbtn">Signup</button>
+            </form>
+        </div>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

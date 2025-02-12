@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .full-page-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://img.freepik.com/free-vector/gradient-abstract-wireframe-background_23-2149009903.jpg');
+      background-size: cover; /* Ensure the image covers the entire screen */
+      background-position: center;
+      background-attachment: fixed; /* Keeps the image fixed when scrolling */
+      z-index: -1; /* Keep the background behind the content */
+    }
+    .container {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+      border-radius: 8px;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+      margin: 0 auto;
+      position: relative; /* Keeps the content in front of the background */
+      margin-top: 20px; /* Add margin for spacing at the top */
+    }
+    h1, h2 {
+      color: #4CAF50;
+    }
+    .laptop-list {
+      margin-top: 20px;
+    }
+    .laptop {
+      background-color: #ffffff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .stolen {
+      color: red;
+      font-weight: bold;
+    }
+    .laptop p {
+      font-size: 16px;
+      margin: 5px 0;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      resize: vertical;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 10px;
+      padding: 12px 20px;
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      display: block;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #e63e3e;
+    }
+    .actions {
+      margin-top: 20px;
+    }
+    .actions a {
+      font-size: 16px;
+      text-decoration: none;
+      color: #4CAF50;
+      padding: 10px 20px;
+      background-color: #f4f4f4;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .actions a:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .referral-code {
+      margin-top: 30px;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .referral-code input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 80%;
+    }
+    .referral-code button {
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-left: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .referral-code button:hover {
+      background-color: #45a049;
+    }
+    .laptop form {
+      margin-top: 15px;
+    }
+    /* Style for Mark as Stolen button */
+    .stolen-btn {
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      padding: 12px 20px;
+      width: 100%;
+      margin-top: 10px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .stolen-btn:hover {
+      background-color: #e63e3e;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-page background image -->
+  <div class="full-page-image"></div>
+
+  <div class="container">
+    <h1>Welcome, <%= user.name %></h1>
+    <h2>Your Registered Laptops</h2>
+
+    <div class="laptop-list">
+      <% laptops.forEach(function(laptop) { %>
+        <div class="laptop">
+          <p><strong>Model:</strong> <%= laptop.model %></p>
+          <p><strong>Serial Number:</strong> <%= laptop.serialNumber %></p>
+          <p><strong>Brand:</strong> <%= laptop.brand %></p>
+          <p><strong>Warranty:</strong> <%= laptop.warranty %> years</p>
+
+          <% if (laptop.stolenMessage) { %>
+            <p class="stolen">This laptop has been marked as stolen. Message: <%= laptop.stolenMessage %></p>
+          <% } else { %>
+            <p>This laptop is not reported as stolen.</p>
+            <!-- Form to mark laptop as stolen -->
+            <form action="/report-stolen" method="POST">
+              <input type="hidden" name="serialNumber" value="<%= laptop.serialNumber %>">
+              <textarea name="stolenMessage" placeholder="Enter stolen message" required></textarea>
+              <button type="submit" class="stolen-btn">Mark as Stolen</button>
+            </form>
+          <% } %>
+        </div>
+      <% }) %>
+    </div>
+    <!-- Actions -->
+    <div class="actions">
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+</body>
+</html>

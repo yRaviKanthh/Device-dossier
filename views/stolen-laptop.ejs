@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stolen Laptop Alert</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+    }
+    h1 {
+      color: #ff4d4d;
+      margin: 20px 0;
+      font-size: 36px;
+      text-shadow: 2px 2px 5px #000;
+    }
+    p, li {
+      font-size: 18px;
+      margin: 10px 0;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .container {
+      max-width: 700px;
+      margin: 20px auto;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    h2 {
+      color: #ffdb4d;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px #000;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+    li strong {
+      color: #00ffcc;
+    }
+    img {
+      margin: 20px 0;
+      width: 200px;
+      height: 200px;
+      border: 3px solid #fff;
+      border-radius: 10px;
+    }
+    .button-container {
+      margin-top: 20px;
+    }
+    button {
+      background-color: #00bfff;
+      color: #fff;
+      padding: 12px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #0088cc;
+      transform: scale(1.05);
+    }
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Stolen Laptop Detected</h1>
+  <p><strong>Message from the original user:</strong> <%= stolenMessage %></p>
+  
+  <div class="container">
+    <h2>Original User Details</h2>
+    <p><strong>Name:</strong> <%= userDetails.name %></p>
+    <p><strong>Email:</strong> <%= userDetails.email %></p>
+    
+    <h2>Laptop Details</h2>
+    <ul>
+      <li><strong>Serial Number:</strong> <%= laptopDetails.serialNumber %></li>
+      <li><strong>Model:</strong> <%= laptopDetails.model %></li>
+      <li><strong>Brand:</strong> <%= laptopDetails.brand %></li>
+      <li><strong>Warranty:</strong> <%= laptopDetails.warranty %> months</li>
+      <li><strong>Operating System:</strong> <%= laptopDetails.os %></li>
+      <li><strong>Memory:</strong> <%= laptopDetails.memory %> GB</li>
+      <li><strong>Storage:</strong> <%= laptopDetails.storage %> GB</li>
+    </ul>
+  </div>
+  
+  <img src="<%= qrCode %>" alt="QR Code">
+  
+  <div class="button-container">
+    <a href="/dashboard"><button>Return to Dashboard</button></a>
+    <a href="/login-signup"><button>Return to Login</button></a>
+  </div>
+</body>
+</html>
