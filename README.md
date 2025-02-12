@@ -101,7 +101,7 @@ git push origin main
 ## 📸 Screenshots
 
 ### 🔹 *Web Interface*
-![Web App Screenshot]https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/7420f9ae0d9dff481a2efd82363b814f8c693f1f/screenshots/Singup.png
+![Web App Screenshot](https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/7420f9ae0d9dff481a2efd82363b814f8c693f1f/screenshots/Singup.png)
 
 
 ### 🔹 *QR Code Verification*
