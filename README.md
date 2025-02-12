@@ -94,9 +94,6 @@ node app.js
 
 ![Report](https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/0950a662782c22e6ed6afd2e476e91296e270477/screenshots/Report.png)
 
-![Maps](https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/04a38cc13f086508f7d0ac4ea5018dc18757bc44/screenshots/Maps.png)
-
-
 ---
 
 ## 🏆 Future Enhancements  
