@@ -55,7 +55,7 @@ project/
 - *Frontend:* EJS, HTML, CSS, JavaScript  
 - *Database:* MongoDB  
 - *APIs:* Leaflet.js (for map integration), QR Code API  
-- *Tools:* Git, Postman, npm  
+- *Tools:* npm  
 
 ---
 
