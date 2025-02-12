@@ -112,10 +112,6 @@ git push origin main
 ![Maps](https://raw.githubusercontent.com/yRaviKanthh/Device-dossier/04a38cc13f086508f7d0ac4ea5018dc18757bc44/screenshots/Maps.png)
 
 
-
-### 🔹 *QR Code Verification*
-![QR Code Verification](https://your-screenshot-link.com/qr-code-verification.png)
-
 ---
 
 ## 🏆 Future Enhancements  
@@ -124,12 +120,6 @@ git push origin main
 ✅ Add multi-language support  
 ✅ Enhance UI with interactive charts and graphs  
 ✅ Integrate cloud storage for device data  
-
----
-
-## 📜 License  
-
-This project is *open-source* under the [MIT License](LICENSE).  
 
 ---
 
