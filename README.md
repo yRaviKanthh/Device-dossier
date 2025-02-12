@@ -26,9 +26,12 @@ project/
 │   ├── LaptopStoreMap/
 │   │   └── index.html          # Frontend page for laptop store map
 │   ├── register-laptop.html    # Registration form for laptops
+    ├── scrip.js                 
+    ├── style.css               #Stylesheet for the application
+    ├── styles.css              #Stylesheet for the application
 │   ├── view-laptop.html        # View details of registered laptops
-│   ├── style.css
-├── screenshort/               #for github Stylesheet for the application
+               #Stylesheet for the application
+├── screenshort/                #for github Stylesheet for the application
 ├── views/
 │   ├── dashboard.ejs           # Dashboard view for the application
 │   ├── index.ejs               # Homepage view
@@ -39,7 +42,6 @@ project/
 │   ├── report-stolen.ejs       # Report stolen laptop view
 │   ├── second-hand-laptop.ejs  # Second-hand laptop-related view
 │   ├── stolen-laptop.ejs       # Stolen laptop details view
-│   └── update-password.ejs     # Password update view
 ├── app.js                      # Main Express.js app setup
 ├── package-lock.json           # npm lockfile
 ├── package.json                # Dependencies and project metadata
