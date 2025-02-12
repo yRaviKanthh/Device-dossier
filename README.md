@@ -1,56 +1,61 @@
-<<<<<<< HEAD
-# Device-dossier
-🚀 Device Dossier – A scalable solution for device security! Verify authenticity, check warranties, track lost/stolen devices, and locate service centers using QR codes. Built with Node.js, MongoDB & Leaflet.js, integrating IoT & AI for protection. 🔐📍
-=======
-# 🚀 Device Dossier: Authenticity, Protection & Store Locator
-
-### 📌 About the Project
-**Device Dossier** is a smart and scalable solution designed to enhance device security and management. It allows users to **verify authenticity, check warranty status, track lost or stolen devices, and locate authorized service centers** using **anti-tamper QR codes**.
-
-### 🔑 Key Features
-- ✅ **Device Authentication** – Verify products with unique QR codes.
-- 🔍 **Warranty & Protection** – Check warranty status and report stolen/lost devices.
-- 📍 **Store Locator** – Find authorized service centers near you with **Leaflet.js**.
-- 🔐 **User Registration** – Secure onboarding and device linking.
-
-### 🛠️ Tech Stack
-- **Backend**: Node.js (Express.js), MongoDB
-- **Frontend**: EJS, JavaScript, HTML, CSS
-- **Mapping & Geolocation**: Leaflet.js
-- **Security**: QR code-based authentication
-
-### 📂 Project Structure
-project/ ├── models/ # Database models ├── public/ # Frontend assets (CSS, JS, HTML) ├── views/ # EJS templates ├── routes/ # API and web routes ├── app.js # Main backend logic ├── package.json # Dependencies and metadata
-
-bash
-Copy
-Edit
-
-### 🚀 Getting Started
-#### 1️⃣ Clone the Repository  
-```sh
-git clone https://github.com/yourusername/device-dossier.git
-cd device-dossier
-2️⃣ Install Dependencies
-sh
-Copy
-Edit
-npm install
-3️⃣ Run the Application
-sh
-Copy
-Edit
-node app.js
-Open your browser and navigate to http://localhost:3000.
-
-🤝 Contributing
-Contributions are welcome! Feel free to fork the repo, create a new branch, and submit a Pull Request.
-
-🚀 Device Dossier – Ensuring Device Security with IoT & AI Integration! 🔐📍
-
-vbnet
-Copy
-Edit
-
-Let me know if you need any modifications! 🚀
-
+🏡 Device Dossier: Authenticity, Protection & Store Locator for Devices
+This is a Device Dossier web application designed to verify device authenticity, check warranty status, identify lost or stolen devices, and locate authorized service centers. The application uses anti-tamper QR codes and a microservices architecture for scalability and robustness.
+📌 Features
+✅ Verify device authenticity using a QR code
+✅ Check warranty status and report stolen devices
+✅ Locate authorized service centers with an interactive map
+✅ User-friendly web interface built with Node.js and Express
+✅ Secure and scalable microservices architecture
+📂 Project Structure
+device_dossier/
+│── models/
+│   ├── Laptop.js               # Model for laptop-related data
+│   ├── user.js                 # Model for user-related data
+│── node_modules/               # Installed npm packages
+│── public/
+│   ├── LaptopStoreMap/
+│   │   └── index.html          # Frontend page for laptop store map
+│   ├── register-laptop.html    # Registration form for laptops
+│   ├── view-laptop.html        # View details of registered laptops
+│   ├── style.css               # Stylesheet for the application
+│── views/
+│   ├── dashboard.ejs           # Dashboard view for the application
+│   ├── index.ejs               # Homepage view
+│   ├── laptop-registered.ejs   # View for displaying registered laptops
+│   ├── login-signup.ejs        # Login and signup view
+│   ├── qr-display.ejs          # QR code display view
+│   ├── register-laptop.ejs     # Laptop registration view
+│   ├── report-stolen.ejs       # Report stolen laptop view
+│   ├── second-hand-laptop.ejs  # Second-hand laptop-related view
+│   ├── stolen-laptop.ejs       # Stolen laptop details view
+│   ├── update-password.ejs     # Password update view
+│── app.js                      # Main Express.js app setup
+│── package-lock.json           # npm lockfile
+│── package.json                # Dependencies and project metadata🎯 Technologies Used
+Backend: Node.js, Express.jsFrontend: HTML, CSS, EJSDatabase: MongoDBDeployment: Render
+🔧 Installation & Setup
+🔹 Clone the Repository
+git clone https://github.com/your-username/device_dossier.git
+cd device_dossier🔹 Install Dependencies
+npm install🔹 Run the Application
+node app.js🔗 Open in your browser:http://127.0.0.1:3000/
+🚀 Live Websitehttps://device-dossier.onrender.com/
+🚀 Deploying on Render1️⃣ Push Code to GitHub
+git add .
+git commit -m "Initial commit"
+git push origin main2️⃣ Deploy on Render:
+Go to Render
+Click New Web Service
+Connect to your GitHub repository
+Set Start Command: node app.js
+Click Deploy 🎉
+📸 Screenshots
+🔹 Web InterfaceWeb App Screenshot
+🔹 QR Code VerificationQR Code Screenshot
+🏆 Future Enhancements
+✅ Implement AI-based anomaly detection for fraud prevention✅ Add a blockchain-based verification system✅ Integrate additional device tracking features
+📜 License
+This project is open-source under the MIT License.
+💡 Need Help?
+Feel free to open an issue or contribute to improving this project! 😊
+⭐ If you like this project, give it a star on GitHub! ⭐
