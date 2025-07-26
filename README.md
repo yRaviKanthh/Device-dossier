@@ -1,6 +1,7 @@
 # 📱 Device Dossier: Authenticity, Protection & Store Locator for Devices
 
-This is a *Device Authentication and Store Locator* web application built using *Node.js* and *MongoDB*. The application verifies device authenticity, checks warranty status, tracks stolen devices, and locates authorized service centers using anti-tamper QR codes.
+This is a *Device Dossier – A smart, scalable solution for device security!
+Verify authenticity, check warranties, track lost/stolen devices, and identify the original owner using secure QR codes. Built with Node.js, MongoDB & Leaflet.js, integrating IoT & AI for enhanced protection.
 
 ---
 
